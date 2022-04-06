@@ -1,0 +1,22 @@
+{% extends 'bookaccount/base.html'%}
+{% load static %}
+    
+{% block content %}    
+
+
+    {% if messages %}
+    {% for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{ message.tags}} mb-5" {% endif %}> {{message}}</p>
+    {% endfor %}
+  {% endif %}
+<div class="col-sm-3">
+    <h3 class=" my-5 ">Add BOOK Infromations</h3>
+    <form action="" method="post">
+            {% csrf_token %}
+             {{ form.as_p }}
+        <input type="submit" value="Add" class="btn btn-success">
+        <a href="{% url 'index' %}" class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+
+{% endblock content %}

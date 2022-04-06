@@ -1,0 +1,32 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LIBRARY</title>
+    <link rel="stylesheet" href="{% static 'bookaccount/css/bootstrap.min.css' %}">
+    <link  rel="stylesheet"  href="{% static 'bookaccount/css/style.css' %}">
+
+</head>
+<body>
+
+<div class="container-fluid ">
+    {% include 'bookaccount/navbar.html'%}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% block msg%}   {% endblock msg%}
+        </div>
+    </div>
+    <div class="row">
+        {% block side %}   {% endblock side %}
+        {% block content %}   {% endblock content %}
+    </div>
+</div>
+<style src="{% static 'bookaccount/js/bootstrap.js'  %}"></style>
+<style src="{% static 'bookaccount/js/jquery.js'  %}"></style>
+<style src="{% static 'bookaccount/js/proper.js'  %}"></style>
+</body>
+</html>
