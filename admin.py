@@ -44,19 +44,19 @@ class UserAdmin(BaseUserAdmin):
     
     add_form = UserCreationForm
     
-    list_display = ('id','email', 'name', 'is_admin')
+    list_display = ('id','email', 'name', 'is_admin',)
     list_filter = ('is_admin',)
     fieldsets = (
         ('User credentials', {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('name',)}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        ('Permissions', {'fields': ('is_admin','groups','user_permissions')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'name', 'password1', 'password2'),
+            'fields': ('email', 'name', 'password1', 'password2',),
         }),
     )
     search_fields = ('email',)
