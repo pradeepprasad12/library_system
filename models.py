@@ -1,7 +1,7 @@
-from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from django.conf import settings
 from django.contrib.auth.models import Group, Permission
+from django.db import models
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser,PermissionsMixin
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -38,7 +38,7 @@ class UserManager(BaseUserManager):
 
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField(
         verbose_name='Email',
         max_length=255,
@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
     name = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
